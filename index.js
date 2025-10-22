@@ -1,4 +1,4 @@
-// backend/index.js (Poora Code with Explicit CORS Origin)
+// backend/index.js (Poora Code - CORS Fix + Rename API)
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -16,7 +16,7 @@ const auth = require('./middleware/auth');
 // --- CORS Configuration ---
 const corsOptions = {
   origin: 'https://cipher-studio-frontend.vercel.app', // Aapka Vercel frontend URL
-  optionsSuccessStatus: 200 // Kuch browsers ke liye zaroori
+  optionsSuccessStatus: 200
 };
 
 const app = express();
@@ -28,7 +28,7 @@ app.use(express.json());
 
 // --- MongoDB Connection ---
 // !!! APNI CONNECTION STRING YAHAN PASTE KAREIN !!!
-const MONGO_URI = "YAHAN_APNI_CONNECTION_STRING_PASTE_KAREIN";
+const MONGO_URI = "mongodb+srv://rashid276142:7052Lpu%40@cipherstudio-cluster.iikm2ah.mongodb.net/?retryWrites=true&w=majority&appName=cipherstudio-cluster";
 mongoose.connect(MONGO_URI)
   .then(() => console.log('MongoDB connected successfully!'))
   .catch((err) => console.error('MongoDB connection error:', err));
