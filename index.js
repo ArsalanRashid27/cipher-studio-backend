@@ -1,4 +1,4 @@
-// backend/index.js (Poora Code - Reverted to Simple CORS)
+// backend/index.js (Poora Code - Trying different CORS config)
 const express = require('express');
 const cors = require('cors'); // Import cors
 const mongoose = require('mongoose');
@@ -17,7 +17,16 @@ const app = express();
 const PORT = 5000;
 const JWT_SECRET = "your-secret-key";
 
-app.use(cors()); // <-- Simplified CORS: Allow all origins
+// --- CORS Configuration (Try #3 - More Permissive but standard) ---
+// Allow requests from any origin
+app.use(cors({
+  origin: '*', // Allow all origins
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allow standard methods
+  allowedHeaders: ['Content-Type', 'Authorization'] // Allow necessary headers
+}));
+// Handle preflight requests explicitly for all routes
+app.options('*', cors()); // Enable preflight across-the-board
+
 app.use(express.json());
 
 // --- MongoDB Connection ---
