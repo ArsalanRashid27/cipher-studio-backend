@@ -1,6 +1,6 @@
-// backend/index.js (Poora Code - CORS Fix + Rename API)
+// backend/index.js (Poora Code - CORS Fix + Rename API + Your URI)
 const express = require('express');
-const cors = require('cors');
+const cors = require('cors'); // Import cors
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -13,22 +13,15 @@ const User = require('./models/User');
 // --- Hamaara Guard (Middleware) ---
 const auth = require('./middleware/auth');
 
-// --- CORS Configuration ---
-const corsOptions = {
-  origin: 'https://cipher-studio-frontend.vercel.app', // Aapka Vercel frontend URL
-  optionsSuccessStatus: 200
-};
-
 const app = express();
 const PORT = 5000;
 const JWT_SECRET = "your-secret-key";
 
-app.use(cors(corsOptions)); // <-- CORS ko options ke saath use karo
+app.use(cors()); // <-- Simplified CORS: Allow all origins
 app.use(express.json());
 
 // --- MongoDB Connection ---
-// !!! APNI CONNECTION STRING YAHAN PASTE KAREIN !!!
-const MONGO_URI = "mongodb+srv://rashid276142:7052Lpu%40@cipherstudio-cluster.iikm2ah.mongodb.net/?retryWrites=true&w=majority&appName=cipherstudio-cluster";
+const MONGO_URI = "mongodb+srv://rashid276142:7052Lpu%40@cipherstudio-cluster.iikm2ah.mongodb.net/?retryWrites=true&w=majority&appName=cipherstudio-cluster"; // <-- Aapki URI daal di hai
 mongoose.connect(MONGO_URI)
   .then(() => console.log('MongoDB connected successfully!'))
   .catch((err) => console.error('MongoDB connection error:', err));
