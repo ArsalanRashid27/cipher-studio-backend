@@ -1,4 +1,4 @@
-// backend/index.js (Poora Code - CORS Fix + Rename API + Your URI)
+// backend/index.js (Poora Code - Reverted to Simple CORS)
 const express = require('express');
 const cors = require('cors'); // Import cors
 const mongoose = require('mongoose');
@@ -21,7 +21,8 @@ app.use(cors()); // <-- Simplified CORS: Allow all origins
 app.use(express.json());
 
 // --- MongoDB Connection ---
-const MONGO_URI = "mongodb+srv://rashid276142:7052Lpu%40@cipherstudio-cluster.iikm2ah.mongodb.net/?retryWrites=true&w=majority&appName=cipherstudio-cluster"; // <-- Aapki URI daal di hai
+// !!! APNI CONNECTION STRING YAHAN PASTE KAREIN !!!
+const MONGO_URI = "mongodb+srv://rashid276142:7052Lpu%40@cipherstudio-cluster.iikm2ah.mongodb.net/?retryWrites=true&w=majority&appName=cipherstudio-cluster"; // <-- Aapki URI daali hui hai
 mongoose.connect(MONGO_URI)
   .then(() => console.log('MongoDB connected successfully!'))
   .catch((err) => console.error('MongoDB connection error:', err));
